@@ -1,2 +1,1 @@
-# pocket-to-notion
- 
+# Simple Pocket to Notion Integration 
