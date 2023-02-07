@@ -8,4 +8,5 @@ config = {
     'debug': os.environ.get('DEBUG') or True,
     "access_token" :  os.environ.get('ACCESS_TOKEN'),
     "consumer_key" : os.environ.get('CONSUMER_KEY'),
+    "port": os.environ.get('PORT')
 }

@@ -28,4 +28,4 @@ def fetch_pocket_data():
 
 if __name__ == "__main__":
     print('This is Running')
-    app.run(host="localhost",port = 8080,debug=config['debug'])
+    app.run(host="0.0.0.0",port = config['port'],debug=config['debug'])
