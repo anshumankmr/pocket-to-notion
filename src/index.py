@@ -1,3 +1,6 @@
+"""
+Main Method for Our API
+"""
 from configuration import config
 from flask import Flask, request
 from datetime import datetime, timedelta
@@ -6,7 +9,7 @@ from pocketwrapper.pocket_wrapper import Pocket
 
 app = Flask(__name__)
 
-@app.route("/",methods = ['GET'])
+@app.route("/",methods = ["GET"])
 def healthcheck():
     return {"message": "OK"}
 
@@ -22,10 +25,10 @@ def callback_function():
 @app.route("/fetch-pocket-data",methods=["GET"])
 def fetch_pocket_data():
     last_hour_date_time = datetime.now() - timedelta(hours = 1)
-    print(last_hour_date_time.strftime('%Y-%m-%d %H:%M:%S'))
+    print(last_hour_date_time.strftime("%Y-%m-%d %H:%M:%S"))
     pocket = Pocket(request.json,config)
     return pocket.fetch_recent_items_from_pocket()
 
 if __name__ == "__main__":
-    print('This is Running')
-    app.run(host="0.0.0.0",port = config['port'],debug=config['debug'])
+    print("This is Running")
+    app.run(host="0.0.0.0",port = config["port"],debug=config["debug"])
