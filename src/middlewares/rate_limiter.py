@@ -12,7 +12,7 @@ def rate_limiting_logic():
         def __rate_limiting_logic(*args, **kwargs):
             # print(f"before {f.__name__}")
             rate_limiter = RateLimiterFirebase(request.remote_addr)
-            if rate_limiter.check_if_allowed(8):
+            if rate_limiter.check_if_allowed(1):
                 result = f(*args, **kwargs)
                 # print(f"{f.__name__} result: {result}")
             else:
