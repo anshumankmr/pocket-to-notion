@@ -32,7 +32,7 @@ class TokenBucket:
         print('In Refill')
         now = time.time()
         time_passed = now - self.last_refill_time_stamp
-        tokens_to_add = int((time_passed * int(self.refill_rate))//(10**3))
+        tokens_to_add = int((time_passed * int(self.refill_rate))//(10**9))
         print(tokens_to_add)
         self.current_bucket_size = min(
             int(self.max_bucket_size), int(tokens_to_add)+ int(self.current_bucket_size))
