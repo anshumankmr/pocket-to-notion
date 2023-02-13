@@ -53,7 +53,7 @@ class Notion:
             # print(api_key, url, headers, payload)
             response = requests.request("POST", url, headers=headers,
                                         data=payload, timeout=5)
-            # print(response.text)
+            print(response.text)
             return {"message": "OK"}
         except Exception as e:
             return e

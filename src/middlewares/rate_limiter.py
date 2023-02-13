@@ -6,6 +6,7 @@ from functools import wraps
 from .rate_limiter_firebase.rate_limiter_firebase import RateLimiterFirebase
 from flask import request
 
+
 def rate_limiting_logic():
     def _rate_limiting_logic(f):
         @wraps(f)
@@ -16,7 +17,7 @@ def rate_limiting_logic():
                 result = f(*args, **kwargs)
                 # print(f"{f.__name__} result: {result}")
             else:
-                print('Whoops!!! Too Many Requests')
+                print("Whoops!!! Too Many Requests")
                 return "Too Many Request", 429
             # print(f"after {f.__name__}")
 
