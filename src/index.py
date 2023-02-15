@@ -30,14 +30,13 @@ def callback_function():
     return """<html>Success</html>"""
 
 
-@app.route("/fetch-pocket-data", methods=["GET"])
+@app.route("/fetch-pocket-data", methods=["POST"])
 @print_log()
 def fetch_pocket_data():
     last_hour_date_time = datetime.now() - timedelta(hours=1)
     print(last_hour_date_time.strftime("%Y-%m-%d %H:%M:%S"))
-    pocket = Pocket(request.json, config)
-    pocket.fetch_recent_items_from_pocket()
-    return {"message": "OK"}
+    pocket = Pocket(request.get_json(force=True), config)
+    return pocket.fetch_recent_items_from_pocket()
 
 
 if __name__ == "__main__":
