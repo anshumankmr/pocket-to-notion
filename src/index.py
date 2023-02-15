@@ -31,10 +31,10 @@ def callback_function():
 
 @app.route("/fetch-pocket-data", methods=["GET"])
 def fetch_pocket_data():
-    print(request.json)
+    print(request.get_json())
     last_hour_date_time = datetime.now() - timedelta(hours=1)
     print(last_hour_date_time.strftime("%Y-%m-%d %H:%M:%S"))
-    pocket = Pocket(request.json, config)
+    pocket = Pocket(request.get_json(), config)
     return pocket.fetch_recent_items_from_pocket()
 
 
