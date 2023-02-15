@@ -42,4 +42,4 @@ def fetch_pocket_data():
 if __name__ == "__main__":
     print("This is Running")
     print(config)
-    app.run(host="0.0.0.0", port=config["port"], debug=config["debug"])
+    app.run(host="0.0.0.0", port=config["port"], debug=False)
