@@ -36,9 +36,17 @@ def fetch_pocket_data():
     last_hour_date_time = datetime.now() - timedelta(hours=1)
     print(last_hour_date_time.strftime("%Y-%m-%d %H:%M:%S"))
     pocket = Pocket(request.get_json(force=True), config)
-    return pocket.fetch_recent_items_from_pocket()
+    pocket_list =  pocket.fetch_recent_items_from_pocket()["list"]
+    snippet_list = []
+    for k,v in pocket_list.items():
+        snippet_list.append({
+            "item_id": k,
+            "link": v["given_url"],
+            "title": v["given_title"]
+        })
+    return snippet_list
 
 
 if __name__ == "__main__":
     print("This is Running")
-    app.run(host="0.0.0.0", port=config["port"], debug=False)
+    app.run(host="0.0.0.0", port=config["port"], debug=config["debug"])
