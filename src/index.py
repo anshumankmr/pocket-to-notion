@@ -35,8 +35,9 @@ def callback_function():
 def fetch_pocket_data():
     last_hour_date_time = datetime.now() - timedelta(hours=1)
     print(last_hour_date_time.strftime("%Y-%m-%d %H:%M:%S"))
-    pocket = Pocket(request.get_json(), config)
-    return pocket.fetch_recent_items_from_pocket()
+    pocket = Pocket(request.json, config)
+    pocket.fetch_recent_items_from_pocket()
+    return {"message": "OK"}
 
 
 if __name__ == "__main__":
