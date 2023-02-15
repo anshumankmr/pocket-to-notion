@@ -29,6 +29,7 @@ class Pocket:
             headers = {
                 "Content-Type": "application/json",
             }
+            print(payload)
             url = constants["get_data_from_pocket"]
             response = requests.request(
                 "POST", url, headers=headers, data=payload, timeout=5)
