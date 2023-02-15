@@ -10,7 +10,7 @@ def print_log():
     def _print_log(f):
         @wraps(f)
         def __print_log(*args, **kwargs):
-            print(request.get_json())
+            print("REQUEST", request.get_json())
             result = f(*args, **kwargs)
             return result
         return __print_log
